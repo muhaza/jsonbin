@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>read</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+
+    <script>
+        let req = new XMLHttpRequest();
+
+        req.onreadystatechange = () => {
+            if (req.readyState == XMLHttpRequest.DONE) {
+                var txt = req.responseText;
+                var obj = JSON.parse(txt);
+                function setObject() {
+                    document.getElementById("demo").innerHTML = obj.Blog;
+                    document.getElementById("demo2").innerHTML = obj.Tarikh;
+                    // + ", " + obj.Sample //use html javascript
+                }
+                setObject();
+            }
+        };
+
+        req.open("GET", "https://api.jsonbin.io/b/5db4636ec35c8e2422996d9c/latest", true);
+        req.setRequestHeader("secret-key", "$2a$10$nwXlQ0LISfBSjGzlFXKrvO6FrJy/aMsBYGvlD0nx7yNYZKH76ugVi");
+        req.send();
+    </script>
+</head>
+
+<body>
+
+
+
+<div class="container col-sm mt-2">
+    <div class="alert alert-dark" role="alert">
+        <div id="demo"></div>
+    </div>
+    <div class="alert alert-dark" role="alert">
+        <div id="demo2"></div>
+    </div>
+</div>
+</body>
+
+</html>
