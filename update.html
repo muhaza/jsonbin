@@ -30,6 +30,8 @@
         
         // Send request
             req.send(myData);
+
+            document.getElementById('itsDone').style.display="block";
         }
     </script>
 </head>
@@ -40,7 +42,7 @@
     <section class="container">
         <h2>Update with Json</h2>
 
-        <form action="/" method="">
+      
             <textarea id="myField" name="Text1" cols="60" rows="6">
 
 {
@@ -52,8 +54,13 @@
             </textarea>
             <!-- <input type="text" id="myField" value='{"Blog": "bar"}' /> -->
             <br>
-            <input class="btn btn-primary" type="submit" onclick="submission()">Submit</input>
-        </form>
+            <div class="btn-group" role="group" aria-label="Basic example">
+                    <button  class="btn btn-secondary" type="submit" onclick="submission()">Send Content</button>
+                    .
+                    <a href="index.html"><button type="button" class="btn btn-secondary" id="itsDone" 
+                        style="display: none;">Home</button></a>
+                </div>
+           
     </section>
 </body>
 

@@ -8,38 +8,36 @@
     <title>VUE CREATE JSON</title>
     <!-- development version, includes helpful console warnings -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
 </head>
 
 <body>
 
-        <div id="app">
-                <p>{{task.Blog}}</p>
-            </div>
-        
-
-        <script>
-
-            // JSONbin with our JSON
-            const getUrl = 'https://api.jsonbin.io/b/5db4636ec35c8e2422996d9c/latest'; // request URL
-            const token = '$2a$10$nwXlQ0LISfBSjGzlFXKrvO6FrJy/aMsBYGvlD0nx7yNYZKH76ugVi'; // access token
-            var axiosHeaders = {
-                headers: { 'secret-key': token }
-            };
+    <div id="example">
+        <button v-on:click="greet">Greet</button>
+    </div>
 
 
-            var app = new Vue({
-                el: '#app',
-                data: {
-                    task: '',
-                },
-                mounted() {
-                    axios.get(getUrl, axiosHeaders)
-                        .then(response => this.task = response.data);
+    <script>
+
+
+        var vm = new Vue({
+            el: '#example',
+            data: {
+                name: 'Vue.js'
+            },
+            // define methods under the `methods` object
+            methods: {
+                greet: function (event) {
+                    // `this` inside methods point to the Vue instance
+                    alert('Hello ' + this.name + '!')
+                    // `event` is the native DOM event
+                    alert(event.target.tagName)
                 }
-            });
+            }
+        });
+        // you can invoke methods in JavaScript too
+        vm.greet() // -> 'Hello Vue.js!
 
-        </script>
+    </script>
 
 </body>
-
