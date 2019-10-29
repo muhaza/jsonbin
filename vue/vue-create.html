@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>VUE CREATE JSON</title>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.js"></script>
+</head>
+
+<body>
+
+        <div id="app">
+                <p>{{task.Blog}}</p>
+            </div>
+        
+
+        <script>
+
+            // JSONbin with our JSON
+            const getUrl = 'https://api.jsonbin.io/b/5db4636ec35c8e2422996d9c/latest'; // request URL
+            const token = '$2a$10$nwXlQ0LISfBSjGzlFXKrvO6FrJy/aMsBYGvlD0nx7yNYZKH76ugVi'; // access token
+            var axiosHeaders = {
+                headers: { 'secret-key': token }
+            };
+
+
+            var app = new Vue({
+                el: '#app',
+                data: {
+                    task: '',
+                },
+                mounted() {
+                    axios.get(getUrl, axiosHeaders)
+                        .then(response => this.task = response.data);
+                }
+            });
+
+        </script>
+
+</body>
+

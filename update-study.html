@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Update</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <script>
+
+        let req = new XMLHttpRequest();
+
+        req.onreadystatechange = () => {
+            if (req.readyState == XMLHttpRequest.DONE) {
+                console.log(req.responseText);
+            }
+        };
+        function submission(){
+        req.open("PUT", "https://api.jsonbin.io/b/5db730da23b6dd5accf00017", true);
+        req.setRequestHeader("Content-type", "application/json");
+        req.setRequestHeader("secret-key", "$2a$10$nwXlQ0LISfBSjGzlFXKrvO6FrJy/aMsBYGvlD0nx7yNYZKH76ugVi");
+
+        // var myData = `
+        // {
+
+        // "Blog": "Bermain dengan database jsonbin testing",
+        // "Tarikh":"27 Oct 2019"
+
+        // }
+        // `;
+
+        var myData = document.getElementById('myField').value;
+
+        
+        req.send(myData);
+        }
+    </script>
+</head>
+<body>
+    <br>
+    <br>
+    <section class="container">
+    <h2>Update with Json</h2>
+        <textarea id="myField" name="Text1" cols="60" rows="6">
+{
+"title": "Bermain dengan database jsonbin testing",
+"post": "Edit post disini",
+"date":"27 Oct 2019"
+}</textarea>
+        <!-- <input type="text" id="myField" value='{"Blog": "bar"}' /> -->
+        <br>
+    <button class="btn btn-primary" type="submit" onclick="submission()">Submit</button>
+</section>
+</body>
+</html>

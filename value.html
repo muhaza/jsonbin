@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+    <!-- <form enctype='application/json'>
+First Name: <input enctype='application/json' id="myText" name="blog" value="Mickey">
+<button onclick="myFunction()">Try it</button>
+</!-->
+
+    <form enctype='application/json'>
+        <input id="myText" name='name' value='Bender'>
+        <button onclick="myFunction()">Try it</button>
+    </form>
+
+    <p id="demo"></p>
+
+    <script>
+        function myFunction() {
+            let req = new XMLHttpRequest();
+
+            req.onreadystatechange = () => {
+                if (req.readyState == XMLHttpRequest.DONE) {
+                    console.log(req.responseText);
+                }
+            };
+
+            var x = document.getElementById("myText").value;
+            var myJSON = JSON.stringify(x);
+            // document.write(myJSON)
+
+            req.open("PUT", "https://api.jsonbin.io/b/5db4636ec35c8e2422996d9c/", true);
+            req.setRequestHeader("Content-type", "application/json");
+            req.setRequestHeader("secret-key", "$2a$10$nwXlQ0LISfBSjGzlFXKrvO6FrJy/aMsBYGvlD0nx7yNYZKH76ugVi");
+            req.send(myJSON);
+
+
+        }
+    </script>
+
+</body>
+
+</html>

@@ -19,15 +19,16 @@
                 var txt = req.responseText;
                 var obj = JSON.parse(txt);
                 function setObject() {
-                    document.getElementById("demo").innerHTML = obj.Blog;
-                    document.getElementById("demo2").innerHTML = obj.Tarikh;
+                    document.getElementById("demo").innerHTML = obj.title;
+                    document.getElementById("demo2").innerHTML = obj.post;
+                    document.getElementById("demo3").innerHTML = obj.date;
                     // + ", " + obj.Sample //use html javascript
                 }
                 setObject();
             }
         };
 
-        req.open("GET", "https://api.jsonbin.io/b/5db4636ec35c8e2422996d9c/latest", true);
+        req.open("GET", "https://api.jsonbin.io/b/5db730da23b6dd5accf00017/latest", true);
         req.setRequestHeader("secret-key", "$2a$10$nwXlQ0LISfBSjGzlFXKrvO6FrJy/aMsBYGvlD0nx7yNYZKH76ugVi");
         req.send();
     </script>
@@ -36,13 +37,17 @@
 <body>
 
 
-
-<div class="container col-sm mt-2">
-    <div class="alert alert-dark" role="alert">
+        <br>
+        <br>
+<div class="container  mt-2 ">
+    <h2> Bermain Dengan Headless Database</h2>
+    <div class=" col-sm-9 alert alert-dark" role="alert">
         <div id="demo"></div>
-    </div>
-    <div class="alert alert-dark" role="alert">
         <div id="demo2"></div>
+        <div id="demo3"></div>
+    </div>
+
+        
     </div>
 </div>
 </body>
