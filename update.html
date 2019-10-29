@@ -8,7 +8,7 @@
 
 
     <script>
-
+        // Should create Server Request
         let req = new XMLHttpRequest();
 
         req.onreadystatechange = () => {
@@ -16,41 +16,45 @@
                 console.log(req.responseText);
             }
         };
-        function submission(){
-        req.open("PUT", "https://api.jsonbin.io/b/5db730da23b6dd5accf00017", true);
-        req.setRequestHeader("Content-type", "application/json");
-        req.setRequestHeader("secret-key", "$2a$10$nwXlQ0LISfBSjGzlFXKrvO6FrJy/aMsBYGvlD0nx7yNYZKH76ugVi");
+        // Should create function of request and PUT submit to database
+        function submission() {
+            req.open("PUT", "https://api.jsonbin.io/b/5db730da23b6dd5accf00017", true);
+            req.setRequestHeader("Content-type", "application/json");
+            req.setRequestHeader("secret-key", "$2a$10$nwXlQ0LISfBSjGzlFXKrvO6FrJy/aMsBYGvlD0nx7yNYZKH76ugVi");
 
-        // var myData = `
-        // {
+            /*var myData = `{"Blog": "Bermain dengan database jsonbin testing","Tarikh":"27 Oct 2019" }`;*/
+            // ** above is the example of JSON data, first I try to play around
 
-        // "Blog": "Bermain dengan database jsonbin testing",
-        // "Tarikh":"27 Oct 2019"
-
-        // }
-        // `;
-
-        var myData = document.getElementById('myField').value;
-
+        // Should get data from HTML form
+            var myData = document.getElementById('myField').value;
         
-        req.send(myData);
+        // Send request
+            req.send(myData);
         }
     </script>
 </head>
+
 <body>
     <br>
     <br>
     <section class="container">
-    <h2>Update with Json</h2>
-        <textarea id="myField" name="Text1" cols="60" rows="6">
+        <h2>Update with Json</h2>
+
+        <form action="/" method="">
+            <textarea id="myField" name="Text1" cols="60" rows="6">
+
 {
 "title": "Bermain dengan database jsonbin testing",
 "post": "Edit post disini",
 "date":"27 Oct 2019"
-}</textarea>
-        <!-- <input type="text" id="myField" value='{"Blog": "bar"}' /> -->
-        <br>
-    <button class="btn btn-primary" type="submit" onclick="submission()">Submit</button>
-</section>
+}
+
+            </textarea>
+            <!-- <input type="text" id="myField" value='{"Blog": "bar"}' /> -->
+            <br>
+            <input class="btn btn-primary" type="submit" onclick="submission()">Submit</input>
+        </form>
+    </section>
 </body>
+
 </html>
